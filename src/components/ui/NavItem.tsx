@@ -12,7 +12,7 @@ interface NavItemProps{
 
 export default function NavItem({ to, label, icon }:NavItemProps){
     const Icon = icon
-    const baseClasses = "flex items-center gap-2 rounded-md px-3 py-2 transition-colors"
+    const baseClasses = "flex items-center gap-3 rounded-md px-3 py-2 transition-colors"
     const activeClasses = "bg-slate-800 text-white font-medium"
     const inactiveClasses = "text-slate-300 hover:bg-slate-800 hover:text-white"
 
@@ -20,8 +20,8 @@ export default function NavItem({ to, label, icon }:NavItemProps){
         <NavLink
             to={to}
             className={({ isActive })=> `${baseClasses} ${isActive ? activeClasses : inactiveClasses}` }>
-            <Icon/>
-            {label}
+            <Icon size={20}/>
+            <span>{label}</span>
         </NavLink>
     )
 }
