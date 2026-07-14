@@ -9,6 +9,8 @@ import type { ProductFormData } from "@/components/products/ProductModal"
 import type { ProductStatus } from "@/constants/products"
 import { Plus } from "lucide-react"
 import ConfirmDialog from "@/components/common/ConfirmDialog"
+import { toast } from "sonner"
+
 
 
 
@@ -41,6 +43,7 @@ export default function ProductsPage(){
             status
         }
 
+        toast.success('Product created successfully')
         setProducts((current) => [...current, newProduct])
     }
 
@@ -53,23 +56,28 @@ export default function ProductsPage(){
                     : product
             )
         )
+
+        toast.success('Product updated successfully')
         setEditingProduct(null)    
     }
 
 
     const handleDeleteProduct = (product:Product)=>{
         setProductToDelete(product)
-        setIsDeleteOpen(true)
+        setIsDeleteOpen(true)        
     }
 
     const confirmDeleteProduct = ()=>{
-        if(!productToDelete) return null
+        if(!productToDelete) return
 
         setProducts((current) =>
             current.filter(
                 (product) => product.id !== productToDelete.id
             )
         )
+
+
+        toast.success('Product deleted successfully')
 
         setProductToDelete(null)
         setIsDeleteOpen(false)
