@@ -6,11 +6,12 @@ interface NavItemProps{
     to:string
     label:string
     icon:LucideIcon
+    onClick?: () => void
 }
 
 
 
-export default function NavItem({ to, label, icon }:NavItemProps){
+export default function NavItem({ to, label, icon, onClick }:NavItemProps){
     const Icon = icon
     const baseClasses = "flex items-center gap-3 rounded-md px-3 py-2 transition-colors"
     const activeClasses = "bg-slate-800 text-white font-medium"
@@ -19,9 +20,10 @@ export default function NavItem({ to, label, icon }:NavItemProps){
     return(
         <NavLink
             to={to}
+            onClick={onClick}
             className={({ isActive })=> `${baseClasses} ${isActive ? activeClasses : inactiveClasses}` }>
             <Icon size={20}/>
-            <span>{label}</span>
+            <span>{label}</span>            
         </NavLink>
     )
 }

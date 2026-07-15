@@ -1,4 +1,5 @@
 import { useState } from "react"
+import Switch from "@/components/ui/Switch"
 
 
 
@@ -14,8 +15,7 @@ export default function NotificationsSettings(){
             <div className="space-y-5">
                 <label className="flex items-center justify-between">
                     <span>Email Notifications</span>
-                    <input
-                        type="checkbox"
+                    <Switch
                         checked={email}
                         onChange={() =>
                             setEmail(!email)
@@ -24,8 +24,7 @@ export default function NotificationsSettings(){
 
                 <label className="flex items-center justify-between">
                     <span>Push Notifications</span>
-                    <input
-                        type="checkbox"
+                    <Switch
                         checked={push}
                         onChange={() =>
                             setPush(!push)
@@ -34,8 +33,7 @@ export default function NotificationsSettings(){
 
                 <label className="flex items-center justify-between">
                     <span>Marketing Emails</span>
-                    <input
-                        type="checkbox"
+                    <Switch
                         checked={marketing}
                         onChange={() =>
                             setMarketing(!marketing)

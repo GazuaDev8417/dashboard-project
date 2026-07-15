@@ -14,7 +14,7 @@ interface ProductsTableProps{
 
 export default function ProductsTable({ products, onEdit, onDelete }:ProductsTableProps){
     return(
-        <div className="overflow-x-auto rounded-xl bg-white shadow-sm">
+        <div className="overflow-x-auto">
             <table className="min-w-full">
                 <thead>
                     <tr className="border-b border-slate-200 text-left">

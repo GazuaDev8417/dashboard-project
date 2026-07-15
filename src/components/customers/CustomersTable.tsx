@@ -29,7 +29,7 @@ export default function CustomersTable({
     }
 
     return(
-        <div className="overflow-hidden rounded-xl bg-white shadow-sm">
+        <div className="overflow-x-auto">
 
             <table className="w-full">
 

@@ -1,15 +1,27 @@
+import { Menu } from 'lucide-react'
+import { useSidebar } from '@/context/SideBarContext'
 import { Bell, Search } from "lucide-react"
+/* import { useStackId } from 'recharts/types/cartesian/BarStack' */
+
 
 
 export default function Header(){
+    const { toggleSidebar } = useSidebar()
+
+    
     return(
         <header className="flex h-16 items-center justify-between border-b border-slate-200 bg-white px-6">
             {/* Search */}
-            <div className="relative w-80">
+            <div className="relative hidden w-80 md:block">
                 <Search
                     size={18}
                     className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"/>
                 
+                <button 
+                    className='rounded-lg p-2 hover:gb-slate-100 lg:hidden'
+                    onClick={toggleSidebar}>
+                    <Menu size={22}/>
+                </button>
                 <input
                     type='text'
                     placeholder="Search..."
@@ -30,7 +42,7 @@ export default function Header(){
                         FF
                     </div>
 
-                    <div>
+                    <div className='hidden md:block'>
                         <p className="text-sm font-semibold text-slate-800">
                             Flamarion França
                         </p>

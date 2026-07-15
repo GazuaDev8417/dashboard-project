@@ -1,9 +1,10 @@
-import { useState } from "react"
+import Switch from "@/components/ui/Switch"
+import { useTheme } from "@/context/ThemeContext"
 
 
 
 export default function PreferencesForm(){
-    const [darkMode, setDarkMode] = useState<boolean>(false)
+    const { darkMode, toggleTheme} = useTheme()
     
 
     return(
@@ -12,10 +13,9 @@ export default function PreferencesForm(){
             <div className="space-y-5">
                 <div className="flex items-center justify-between">
                     <span>Dark Mode</span>
-                    <input
-                        type="checkbox"
+                    <Switch
                         checked={darkMode}
-                        onChange={() => setDarkMode(!darkMode)}/>
+                        onChange={toggleTheme}/>
                 </div>
                 <div>
                     <label className="mb-2 block">Language</label>
