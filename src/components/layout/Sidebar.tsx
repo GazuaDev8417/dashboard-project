@@ -21,7 +21,7 @@ export default function Sidebar(){
             left-0
             top-0
             z-50
-            h-screen
+            min-h-screen
             w-72
             bg-slate-900
             p-4
@@ -30,9 +30,9 @@ export default function Sidebar(){
             ${
                 isOpen ? 'translate-x-0' : '-translate-x-full'
             }
-
+            lg:relative
             lg:translate-x-0
-            lg:static
+            lg:shrink-0
         `}>
             <h1 className="text-2xl font-bold text-white">Dashboard SaaS</h1>
 

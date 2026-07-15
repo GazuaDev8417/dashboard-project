@@ -1,6 +1,8 @@
 import { Menu } from 'lucide-react'
 import { useSidebar } from '@/context/SideBarContext'
-import { Bell, Search } from "lucide-react"
+import { Search } from "lucide-react"
+import NotificationMenu from './NotificationMenu'
+import UserMenu from './UserMenu'
 /* import { useStackId } from 'recharts/types/cartesian/BarStack' */
 
 
@@ -18,7 +20,7 @@ export default function Header(){
                     className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"/>
                 
                 <button 
-                    className='rounded-lg p-2 hover:gb-slate-100 lg:hidden'
+                    className='rounded-lg p-2 hover:bg-slate-100 lg:hidden'
                     onClick={toggleSidebar}>
                     <Menu size={22}/>
                 </button>
@@ -31,13 +33,9 @@ export default function Header(){
 
             {/* right side */}
             <div className="flex items-center gap-5">
-                <button className="relative rounded-full p-2 transition hover:bg-slate-100">
-                    <Bell size={20}/>
-
-                    <span className="absolute right-1 top-1 h-2 w-2 rounded-full bg-red-500"/>
-                </button>
-
-                <div className="flex items-center gap-3">
+                <NotificationMenu/>
+                <UserMenu/>
+                {/* <div className="flex items-center gap-3">
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 font-semibold text-white">
                         FF
                     </div>
@@ -51,7 +49,7 @@ export default function Header(){
                             Full Stack Developer
                         </p>
                     </div>
-                </div>
+                </div> */}
             </div>
         </header>
     )

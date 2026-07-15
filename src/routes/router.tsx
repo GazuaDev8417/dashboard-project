@@ -1,4 +1,6 @@
-import { createBrowserRouter } from "react-router-dom"
+import type { ReactNode } from "react"
+import { createBrowserRouter, Navigate } from "react-router-dom"
+import LoginPage from "@/pages/login/LoginPage"
 import AnalyticsPage from "@/pages/analytics/AnalyticsPage"
 import CustomersPage from "@/pages/customers/CustomersPage"
 import DashboardPage from "@/pages/dashboard/DashboardPage"
@@ -9,10 +11,34 @@ import AppLayout from "@/layouts/AppLayout"
 
 
 
+
+interface ProtectedRouteProps{
+    children:ReactNode
+}
+
+
+function ProtectedRoute({ children }:ProtectedRouteProps){
+    const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true'
+
+    if(!isAuthenticated){
+        return <Navigate to='/login' replace/>
+    }
+
+    return children
+}
+
 const router = createBrowserRouter([
     {
+        path: 'login',
+        element: <LoginPage/>,
+    },
+    {
         path: '/',
-        element: <AppLayout/>,
+        element: (
+            <ProtectedRoute>
+                <AppLayout/>
+            </ProtectedRoute>
+        ),
         errorElement: <NotFoundPage/>,
         children: [
             {

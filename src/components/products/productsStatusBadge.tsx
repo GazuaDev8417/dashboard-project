@@ -6,9 +6,9 @@ interface ProductsStatusBadgeProps{
 
 export default function ProductsStatusBadge({ status }:ProductsStatusBadgeProps){
     const styles = {
-        Active: 'gb-green-100 text-green-700',
-        Inactive: 'gb-red-100 text-red-700',
-        'Low Stock': 'gb-yellow-100 text-yellow-700'
+        Active: 'bg-green-100 text-green-700',
+        Inactive: 'bg-red-100 text-red-700',
+        'Low Stock': 'bg-yellow-100 text-yellow-700'
     }
 
     return(
