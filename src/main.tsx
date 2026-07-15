@@ -9,7 +9,6 @@ import { ThemeProvider } from "./context/ThemeContext"
 import router from "./routes/router"
 
 import './styles/global.css'
-import Sidebar from "./components/layout/Sidebar"
 
 
 

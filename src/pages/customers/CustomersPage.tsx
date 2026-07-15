@@ -5,7 +5,6 @@ import CustomersTable from "@/components/customers/CustomersTable"
 import CustomerModal, { type CustomerFormData } from "@/components/customers/CustomerModal"
 import ConfirmDialog from "@/components/common/ConfirmDialog"
 import type { Customer } from "@/constants/customers"
-import Button from "@/components/ui/Button"
 import { toast } from "sonner"
 
 
