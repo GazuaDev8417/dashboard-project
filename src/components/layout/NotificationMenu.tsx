@@ -110,7 +110,9 @@ export default function NotificationMenu(){
                     absolute
                     right-0
                     mt-2
-                    w-80
+                    w-72
+                    max-w-[calc(100vw-2rem)]
+                    sm:w-80
                     rounded-xl
                     border
                     border-slate-200
