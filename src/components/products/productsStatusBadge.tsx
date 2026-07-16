@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next"
+
 interface ProductsStatusBadgeProps{
     status: 'Active' | 'Inactive' | 'Low Stock'
 }
@@ -5,6 +7,7 @@ interface ProductsStatusBadgeProps{
 
 
 export default function ProductsStatusBadge({ status }:ProductsStatusBadgeProps){
+    const { t } = useTranslation()
     const styles = {
         Active: 'bg-green-100 text-green-700',
         Inactive: 'bg-red-100 text-red-700',

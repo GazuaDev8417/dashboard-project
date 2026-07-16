@@ -9,12 +9,14 @@ import type { ProductFormData } from "@/components/products/ProductModal"
 import type { ProductStatus } from "@/constants/products"
 import { Plus } from "lucide-react"
 import ConfirmDialog from "@/components/common/ConfirmDialog"
+import { useTranslation } from "react-i18next"
 import { toast } from "sonner"
 
 
 
 
 export default function ProductsPage(){
+    const { t } = useTranslation()
     const [products, setProducts] = useState(initialProducts)
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
     const [search, setSearch] = useState<string>('')
@@ -87,16 +89,16 @@ export default function ProductsPage(){
         <section className="space-y-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="flex-3xl font-bold text-slate-800">Products</h1>
+                    <h1 className="flex-3xl font-bold text-slate-800">{t('Products')}</h1>
                     <p className="mt-1 text-slate-500">
-                        Manage your products and inventory
+                        {t('Manage your products and inventory')}
                     </p>
                 </div>
                 <Button
                     onClick={() => setIsModalOpen(true)}>
                     <div className="flex items-center gap-2">
                         <Plus size={18}/>
-                        <span>Add Product</span>
+                        <span>{t('Add Product')}</span>
                     </div>
                 </Button>
             </div>

@@ -15,6 +15,11 @@ import { ordersData } from "@/constants/analytics"
 export default function OrdersChart() {
     const { t } = useTranslation()
 
+    const tanslatedData = ordersData.map((item)=>({
+            ...item,
+            month: t(item.month)
+        }))
+
     return (
         <div className="rounded-xl bg-white p-6 shadow-sm">
 
@@ -26,7 +31,7 @@ export default function OrdersChart() {
 
                 <ResponsiveContainer width="100%" height="100%">
 
-                    <BarChart data={ordersData}>
+                    <BarChart data={tanslatedData}>
 
                         <CartesianGrid strokeDasharray="3 3" />
 

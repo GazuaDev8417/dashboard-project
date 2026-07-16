@@ -1,5 +1,6 @@
 import { Pencil, Trash2 } from 'lucide-react'
 import type { Customer } from '@/constants/customers'
+import { useTranslation } from 'react-i18next'
 
 
 interface CustomersTableProps{
@@ -14,15 +15,16 @@ export default function CustomersTable({
     onEdit,
     onDelete
 }:CustomersTableProps){
+    const { t } = useTranslation()
     if(customers.length === 0){
         return(
             <div className="rounded-xl bg-white p-12 text-center shadow-sm">
                 <h2 className="text-xl font-semibold text-slate-700">
-                    No customers found
+                    {t("No customers found")}
                 </h2>
 
                 <p className="mt-2 text-slate-500">
-                    Try another search or add a new customer.
+                    {t("Try another search or add a new customer.")}
                 </p>
             </div>
         )
@@ -37,12 +39,12 @@ export default function CustomersTable({
 
                     <tr className="text-left">
 
-                        <th className="px-6 py-4">Customer</th>
-                        <th className="px-6 py-4">Email</th>
-                        <th className="px-6 py-4">Phone</th>
-                        <th className="px-6 py-4">Status</th>
+                        <th className="px-6 py-4">{t('Customer')}</th>
+                        <th className="px-6 py-4">{t('Email')}</th>
+                        <th className="px-6 py-4">{t('Phone')}</th>
+                        <th className="px-6 py-4">{t('Status')}</th>
                         <th className="px-6 py-4 text-center">
-                            Actions
+                            {t('Actions')}
                         </th>
 
                     </tr>

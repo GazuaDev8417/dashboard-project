@@ -1,5 +1,6 @@
 import { Search, Plus } from 'lucide-react'
 import Button from '@/components/ui/Button'
+import { useTranslation } from 'react-i18next'
 
 
 
@@ -15,6 +16,7 @@ export default function CustomersToolbar({
     onSearchChange,
     onAddCustomer
 }:CustomersToolbarProps){
+    const { t } = useTranslation()
     return(
         <div className="flex flex-col gap-4 rounded-xl bg-white p-4 shadow-sm md:flex-row md:items-center md:justify-between">
 
@@ -28,7 +30,7 @@ export default function CustomersToolbar({
                 <input
                     value={search}
                     onChange={(e) => onSearchChange(e.target.value)}
-                    placeholder="Search customers..."
+                    placeholder={t("Search customers...")}
                     className="w-full rounded-lg border border-slate-300 py-2 pl-10 pr-4 outline-none focus:border-blue-500"
                 />
 
@@ -37,7 +39,7 @@ export default function CustomersToolbar({
             <Button onClick={onAddCustomer}>
                 <div className="flex items-center gap-2">
                     <Plus size={18} />
-                    <span>Add Customer</span>
+                    <span>{t('Add Customer')}</span>
                 </div>
             </Button>
 

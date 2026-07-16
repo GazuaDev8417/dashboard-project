@@ -17,18 +17,24 @@ export default function SalesChart(){
 
 
     const data = [
-        { month: t("months.jan"), revenue: 4000 },
-        { month: t("months.feb"), revenue: 3000 },
-        { month: t("months.mar"), revenue: 5200 },
-        { month: t("months.apr"), revenue: 4700 },
-        { month: t("months.may"), revenue: 6200 },
-        { month: t("months.jun"), revenue: 7100 },
+        { month: "Jan", revenue: 4000 },
+        { month: "Feb", revenue: 3000 },
+        { month: "Mar", revenue: 5200 },
+        { month: "Apr", revenue: 4700 },
+        { month: "May", revenue: 6200 },
+        { month: "Jun", revenue: 7100 },
     ]
+
+
+    const translatedData = data.map((item)=>({
+        ...item,
+        month: t(item.month)
+    }))
 
     return(
         <div className="h-80">
             <ResponsiveContainer>
-                <LineChart data={data}>
+                <LineChart data={translatedData}>
                     <CartesianGrid strokeDasharray='3 3'/>
                     
                     <XAxis dataKey='month'/>

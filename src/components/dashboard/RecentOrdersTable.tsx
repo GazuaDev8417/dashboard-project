@@ -1,4 +1,4 @@
-
+import { useTranslation } from "react-i18next"
 
 interface Order{
     id:number
@@ -43,15 +43,17 @@ const orders:Order[] = [
 
 
 export default function RecentOrdersTable(){
+    const { t } = useTranslation()
+
     return(
         <div className="overflow-x-auto">
             <table className="w-full">
                 <thead>
                     <tr className="border-b border-slate-200 text-left">
-                        <th className="pb-3">Customer</th>
-                        <th className="pb-3">Product</th>
+                        <th className="pb-3">{t('Customer')}</th>
+                        <th className="pb-3">{t('Product')}</th>
                         <th className="pb-3">Total</th>
-                        <th className="pb-3">Status</th>
+                        <th className="pb-3">{t('Status')}</th>
                     </tr>
                 </thead>
 
@@ -62,7 +64,7 @@ export default function RecentOrdersTable(){
                             className="border-b border-slate-100">
                             
                             <td className="py-4">{order.customer}</td>
-                            <td className="py-4">{order.product}</td>
+                            <td className="py-4">{t(order.product)}</td>
                             <td className="py-4">{order.total}</td>
 
                             <td>
@@ -71,7 +73,7 @@ export default function RecentOrdersTable(){
                                     ? 'rounded-full bg-green-100 px-3 py-1 text-sm text-green-700'
                                     : 'rounded-full bg-yellow-100 px-3 py-1 text-sm text-yellow-700'
                                 }>
-                                    {order.status}
+                                    {t(order.status)}
                                 </span>
                             </td>
 

@@ -4,6 +4,7 @@ import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import Button from "../ui/Button"
 import type { Product } from "@/constants/products"
+import { useTranslation } from "react-i18next"
 
 
 
@@ -53,6 +54,8 @@ export default function ProductModal({
         }
     })
 
+    const { t } = useTranslation()
+
 
 
     useEffect(()=>{
@@ -100,7 +103,7 @@ export default function ProductModal({
                 <div className="mb-6 flex items-center justify-between">
 
                     <h2 className="text-xl font-semibold">
-                        {product ? 'Edit Product' : 'Add Product'}
+                        {product ? t('Edit Product') : t('Add Product')}
                     </h2>
 
                     <button
@@ -119,7 +122,7 @@ export default function ProductModal({
 
                     <input
                         {...register('name')}
-                        placeholder="Product name"
+                        placeholder={t("Product name")}
                         className="w-full rounded-lg border border-slate-300 p-3"
                     />
 
@@ -131,7 +134,7 @@ export default function ProductModal({
 
                     <input
                         {...register('category')}
-                        placeholder="Category"
+                        placeholder={t("Category")}
                         className="w-full rounded-lg border border-slate-300 p-3"
                     />
 
@@ -144,7 +147,7 @@ export default function ProductModal({
                     <input
                         {...register('price')}
                         type="number"
-                        placeholder="Price"
+                        placeholder={t("Price")}
                         className="w-full rounded-lg border border-slate-300 p-3"
                     />
 
@@ -157,7 +160,7 @@ export default function ProductModal({
                     <input
                         {...register('stock')}
                         type="number"
-                        placeholder="Stock"
+                        placeholder={t("Stock")}
                         className="w-full rounded-lg border border-slate-300 p-3"
                     />
 
@@ -176,11 +179,11 @@ export default function ProductModal({
                             }}
                             className="rounded-lg border border-slate-300 px-4 py-2"
                         >
-                            Cancel
+                            {t('Cancel')}
                         </button>
 
                         <Button type="submit">
-                            {product ? 'Update Product' : 'Save Product'}
+                            {product ? t('Update Product') : t('Save Product')}
                         </Button>
                     </div>
                 </form>                

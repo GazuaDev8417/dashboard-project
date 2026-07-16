@@ -5,23 +5,19 @@ import { useTranslation } from "react-i18next"
 
 
 
+
 export default function PreferencesForm(){
     const { i18n } = useTranslation()
-    //const { darkMode, toggleTheme} = useTheme()
+    const { t } = useTranslation()
+    
     
 
     return(
         <section className="rounded-xl bg-white p-6 shadow-sm">
-            <h2 className="mb-6 text-xl font-semibold">Preferences</h2>
+            <h2 className="mb-6 text-xl font-semibold">{t('Preferences')}</h2>
             <div className="space-y-5">
-                {/* <div className="flex items-center justify-between">
-                    <span>Dark Mode</span>
-                    <Switch
-                        checked={darkMode}
-                        onChange={toggleTheme}/>
-                </div> */}
                 <div>
-                    <label className="mb-2 block">Language</label>
+                    <label className="mb-2 block">{t('Language')}</label>
                     <select
                         value={i18n.language}
                         onChange={(e) => i18n.changeLanguage(e.target.value)} 
@@ -34,7 +30,7 @@ export default function PreferencesForm(){
                     </select>
                 </div>
                 <div>
-                    <label className="mb-2 block">Timezone</label>
+                    <label className="mb-2 block">{t('Timezone')}</label>
                     <select className="w-full rounded-lg border border-slate-300 p-3">
                         <option value="">UTC</option>
                         <option value="">GMT-3</option>

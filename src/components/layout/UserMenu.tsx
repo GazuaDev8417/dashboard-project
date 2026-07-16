@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useAuth } from "@/context/AuthContext"
+import { useTranslation } from "react-i18next"
 import {
     User,
     Settings,
@@ -12,6 +13,7 @@ import {
 
 
 export default function UserMenu(){
+    const { t } = useTranslation()
     const navigate = useNavigate()
     const { user } = useAuth()
     const [open, setOpen] = useState<boolean>(false)
@@ -58,7 +60,7 @@ export default function UserMenu(){
                             {user.name}
                         </p>
                         <p className="text-xs text-slate-500">
-                            {user.role}
+                            {t(user.role)}
                         </p>
                     </div>
                     <ChevronDown size={18}/>

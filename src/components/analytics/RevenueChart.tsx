@@ -16,6 +16,11 @@ import { useTranslation } from "react-i18next"
 export default function RevenueChart(){
     const { t } = useTranslation()
 
+    const tanslatedData = revenueData.map((item)=>({
+        ...item,
+        month: t(item.month)
+    }))
+
     return(
         <div className="rounded-xl bg-white p-6 shadow-sm">
             <h2 className="mb-6 text-xl font-semibold">
@@ -23,7 +28,7 @@ export default function RevenueChart(){
             </h2>
             <div className="h-80">
                 <ResponsiveContainer width='100%' height='100%'>
-                    <LineChart data={revenueData}>
+                    <LineChart data={tanslatedData}>
                         <CartesianGrid strokeDasharray='3 3'/>
                         <XAxis dataKey='month'/>
                         <YAxis/>

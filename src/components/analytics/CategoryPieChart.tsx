@@ -22,6 +22,11 @@ const COLORS = [
 export default function CategoryPieChart(){
     const { t } = useTranslation()
 
+    const translatedData = categoryData.map((item)=>({
+        ...item,
+        name: t(item.name)
+    }))
+
     return(
         <div className="rounded-xl bh-white p-6 shadow-sm">
             <h2 className="mb-6 text-xl font-semibold">
@@ -31,7 +36,7 @@ export default function CategoryPieChart(){
                 <ResponsiveContainer width='100%' height='100%'>
                     <PieChart>
                         <Pie
-                            data={categoryData}
+                            data={translatedData}
                             dataKey='value'
                             nameKey='name'
                             outerRadius={110}

@@ -5,11 +5,13 @@ import CustomersTable from "@/components/customers/CustomersTable"
 import CustomerModal, { type CustomerFormData } from "@/components/customers/CustomerModal"
 import ConfirmDialog from "@/components/common/ConfirmDialog"
 import type { Customer } from "@/constants/customers"
+import { useTranslation } from "react-i18next"
 import { toast } from "sonner"
 
 
 
 export default function CustomersPage(){
+    const { t } = useTranslation()
     const [customers, setCustomers] = useState(initialCustomers)
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
     const [editingCustomer, setEditingCustomer] = useState<Customer | null>(null)
@@ -80,9 +82,9 @@ export default function CustomersPage(){
         <section className="space-y-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-3xl font-bold text-slate-800">Customers</h1>
+                    <h1 className="text-3xl font-bold text-slate-800">{t('Customers')}</h1>
                     <p className="text-slate-500">
-                        Manage your customer base
+                        {t('Manage your customer base')}
                     </p>
                 </div>
             </div>

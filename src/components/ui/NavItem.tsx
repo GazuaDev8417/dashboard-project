@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom"
 import type { LucideIcon } from "lucide-react"
+import { useTranslation } from "react-i18next"
+
 
 
 interface NavItemProps{
@@ -12,6 +14,7 @@ interface NavItemProps{
 
 
 export default function NavItem({ to, label, icon, onClick }:NavItemProps){
+    const { t } = useTranslation()
     const Icon = icon
     const baseClasses = "flex items-center gap-3 rounded-md px-3 py-2 transition-colors"
     const activeClasses = "bg-slate-800 text-white font-medium"
@@ -23,7 +26,7 @@ export default function NavItem({ to, label, icon, onClick }:NavItemProps){
             onClick={onClick}
             className={({ isActive })=> `${baseClasses} ${isActive ? activeClasses : inactiveClasses}` }>
             <Icon size={20}/>
-            <span>{label}</span>            
+            <span>{t(label)}</span>            
         </NavLink>
     )
 }
