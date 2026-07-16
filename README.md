@@ -183,3 +183,6 @@ This project is licensed under the MIT License.
 Developed by **Flamarion França**.
 
 If you enjoyed this project, consider giving it a ⭐ on GitHub.
+
+
+Link of the application: https://dashboard-project-nu-one.vercel.app/
