@@ -14,6 +14,7 @@ type AuthContextType = {
     user:User
     updateProfile: (data: Omit<User, 'password'>) => void
     updatePassword: (password:string) => void
+    defaultUser:User
 }
 
 const defaultUser:User = {
@@ -63,7 +64,7 @@ export function AuthProvider({ children }:{ children:ReactNode}){
     )
 
     return(
-        <AuthContext.Provider value={{ user, updatePassword, updateProfile }}>
+        <AuthContext.Provider value={{ user, updatePassword, updateProfile, defaultUser }}>
             {children}
         </AuthContext.Provider>
     )

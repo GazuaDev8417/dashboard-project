@@ -17,14 +17,13 @@ interface FormData{
 
 export default function LoginPage(){
     const navigate = useNavigate()
-    const { user } = useAuth()
+    const { defaultUser } = useAuth()
     const [checked, setChecked] = useState<boolean>(false)
     const [form, setForm] =useState<FormData>({
-        email:'',
-        password:''
+        email:'francadasilvaflamarion@gmail.com',
+        password:'123456'
     })
-
-
+    
 
     useEffect(()=>{
         const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true'
@@ -44,17 +43,17 @@ export default function LoginPage(){
 
     const login = (e:FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
+        
+        if(form.email === defaultUser.email && form.password === defaultUser.password && !checked){
+            sessionStorage.setItem('isAuthenticated', 'true')
+            sessionStorage.setItem('user', JSON.stringify(defaultUser))
 
-        if(form.email === user.email && form.password === user.password && checked){
-            localStorage.setItem('isAuthenticated', 'true')
-            localStorage.setItem('user', JSON.stringify(user))
-            
             navigate('/')
 
             return
-        }else if(form.email === user.email && form.password === user.password && !checked){
-            sessionStorage.setItem('isAuthenticated', 'true')
-            sessionStorage.setItem('user', JSON.stringify(user))
+        }else if(form.email === defaultUser.email && form.password === defaultUser.password && checked){
+            localStorage.setItem('isAuthenticated', 'true')
+            localStorage.setItem('user', JSON.stringify(defaultUser))
 
             navigate('/')
 
