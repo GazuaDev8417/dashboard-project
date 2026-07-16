@@ -7,15 +7,19 @@ import {
     Tooltip,
     CartesianGrid,
 } from "recharts"
+import { useTranslation } from "react-i18next"
+
 
 import { ordersData } from "@/constants/analytics"
 
 export default function OrdersChart() {
+    const { t } = useTranslation()
+
     return (
         <div className="rounded-xl bg-white p-6 shadow-sm">
 
             <h2 className="mb-6 text-xl font-semibold">
-                Orders by Month
+                {t("Orders by Month")}
             </h2>
 
             <div className="h-80">

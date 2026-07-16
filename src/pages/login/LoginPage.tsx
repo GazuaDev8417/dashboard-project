@@ -1,32 +1,28 @@
 import { useNavigate } from "react-router-dom"
-import { useEffect } from "react"
+import { useEffect, useState, type FormEvent, type ChangeEvent} from "react"
 import { Mail, Lock } from "lucide-react"
-import { user } from "@/constants/user"
+import { useAuth } from "@/context/AuthContext"
 import Button from "@/components/ui/Button"
-import z from "zod"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
 
 
 
 
-const loginSchema = z.object({
-    email: z.email('Invalid email address'),
-    password: z.string().min(6, 'Password must contain at least 6 characters'),
-    remember: z.boolean().default(false)
-})
+interface FormData{
+    email:string
+    password:string
+}
 
-type LoginForm = z.output<typeof loginSchema>
+
 
 
 export default function LoginPage(){
-    const {register, handleSubmit, formState:{ errors }} = useForm<z.input<typeof loginSchema>,
-        any,
-        z.output<typeof loginSchema>
-    >({ resolver: zodResolver(loginSchema), defaultValues: { email: '', password: '', remember: false }})
-
-
     const navigate = useNavigate()
+    const { user } = useAuth()
+    const [checked, setChecked] = useState<boolean>(false)
+    const [form, setForm] =useState<FormData>({
+        email:'',
+        password:''
+    })
 
 
 
@@ -40,15 +36,23 @@ export default function LoginPage(){
 
 
 
-    const onSubmit = (data:LoginForm)=>{
-        if(data.email === user.email && data.password === user.password && data.remember){
+    const onChange = (e:ChangeEvent<HTMLInputElement>):void=>{
+        const { name, value } = e.target
+        setForm({ ...form, [name]:value })
+    }
+
+
+    const login = (e:FormEvent<HTMLFormElement>)=>{
+        e.preventDefault()
+
+        if(form.email === user.email && form.password === user.password && checked){
             localStorage.setItem('isAuthenticated', 'true')
             localStorage.setItem('user', JSON.stringify(user))
             
             navigate('/')
 
             return
-        }else if(data.email === user.email && data.password === user.password && !data.remember){
+        }else if(form.email === user.email && form.password === user.password && !checked){
             sessionStorage.setItem('isAuthenticated', 'true')
             sessionStorage.setItem('user', JSON.stringify(user))
 
@@ -80,7 +84,7 @@ export default function LoginPage(){
                     </p>
 
                     <form 
-                        onSubmit={handleSubmit(onSubmit)}
+                        onSubmit={login}
                         className="space-y-5">
                         <div>
                             <label 
@@ -94,7 +98,9 @@ export default function LoginPage(){
                                     size={18}
                                     className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"/>
                                 <input 
-                                    {...register('email')}
+                                    name="email"
+                                    value={form.email}
+                                    onChange={onChange}
                                     type="email"
                                     placeholder="your@email.com"
                                     className="
@@ -109,12 +115,6 @@ export default function LoginPage(){
                                         transition
                                         focus:border-blue-500
                                     " />
-                                
-                                {errors.email && (
-                                    <p className="mt-1 text-sm text-red-500">
-                                        {errors.email?.message}
-                                    </p>
-                                )}
                             </div>
                         </div>
 
@@ -128,8 +128,10 @@ export default function LoginPage(){
                                     size={18}
                                     className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"/>
                                 
-                                <input 
-                                    {...register('password')}
+                                <input
+                                    name="password"
+                                    value={form.password}
+                                    onChange={onChange}
                                     type="password"
                                     placeholder="Your password" 
                                     className="
@@ -144,20 +146,15 @@ export default function LoginPage(){
                                         transition
                                         focus:border-blue-500
                                     " />
-
-                                {errors.password && (
-                                    <p className="mt-1 text-sm text-red-500">
-                                        {errors.password?.message}
-                                    </p>
-                                )}
                             </div>
                         </div>
 
                         <div className="mt-7 mb-7 flex items-center justify-between text-sm">
                             <label className="flex items-center gap-2 cursor-pointer">
                                 <input
-                                    {...register('remember')} 
                                     type="checkbox" 
+                                    checked={checked}
+                                    onChange={(e) => setChecked(e.target.checked)}
                                     className="rounded border-slate-300" />
                                 Remember me
                             </label>

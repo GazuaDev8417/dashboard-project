@@ -8,14 +8,18 @@ import {
     CartesianGrid
 } from 'recharts'
 import { revenueData } from '@/constants/analytics'
+import { useTranslation } from "react-i18next"
+
 
 
 
 export default function RevenueChart(){
+    const { t } = useTranslation()
+
     return(
         <div className="rounded-xl bg-white p-6 shadow-sm">
             <h2 className="mb-6 text-xl font-semibold">
-                Revenue Overview
+                {t("Revenue Overview")}
             </h2>
             <div className="h-80">
                 <ResponsiveContainer width='100%' height='100%'>

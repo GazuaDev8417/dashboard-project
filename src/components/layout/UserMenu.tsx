@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import { useAuth } from "@/context/AuthContext"
 import {
     User,
     Settings,
@@ -12,6 +13,7 @@ import {
 
 export default function UserMenu(){
     const navigate = useNavigate()
+    const { user } = useAuth()
     const [open, setOpen] = useState<boolean>(false)
     const menuRef = useRef<HTMLDivElement | null>(null)
 
@@ -53,10 +55,10 @@ export default function UserMenu(){
                     </div>
                     <div className="hidden text-left md:block">
                         <p className="text-sm font-semibold">
-                            Flamarion França
+                            {user.name}
                         </p>
                         <p className="text-xs text-slate-500">
-                            Full Stack Developer
+                            {user.role}
                         </p>
                     </div>
                     <ChevronDown size={18}/>

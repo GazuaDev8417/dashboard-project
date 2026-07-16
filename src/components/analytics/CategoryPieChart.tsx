@@ -7,6 +7,8 @@ import {
     Legend,
 } from "recharts"
 import { categoryData } from "@/constants/analytics"
+import { useTranslation } from "react-i18next"
+
 
 
 const COLORS = [
@@ -18,10 +20,12 @@ const COLORS = [
 
 
 export default function CategoryPieChart(){
+    const { t } = useTranslation()
+
     return(
         <div className="rounded-xl bh-white p-6 shadow-sm">
             <h2 className="mb-6 text-xl font-semibold">
-                Product Categories
+                {t("Product Categories")}
             </h2>
             <div className="h-80">
                 <ResponsiveContainer width='100%' height='100%'>

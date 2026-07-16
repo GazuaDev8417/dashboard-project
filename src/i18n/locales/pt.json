@@ -1,0 +1,38 @@
+{
+    "dashboard": "Painel",
+    "Analytics": "Análises",
+    "customers": "Clientes",
+    "products": "Produtos",
+    "settings": "Configurações",
+    "Monitor your business performance": "Monitore o desempenho do seu negócio",
+    "Revenue": "Receita",
+    "Orders": "Pedidos",
+    "Customers": "Clientes",
+    "Growth": "Crescimento",
+    "Revenue Overview": "Visão Geral de Receita",
+    "Orders by Month": "Pedidos Mensais",
+    "Product Categories": "Categoria de Produtos",   
+
+    "preferences": "Preferências",
+    "language": "Idioma",
+    "timezone": "Fuso Horário",
+
+    "notifications": "Notificações",
+    "emailNotifications": "Notificações por E-mail",
+    "pushNotifications": "Notificações Push",
+    "marketingEmails": "E-mails de Marketing",
+    "months": {
+        "jan": "Jan",
+        "feb": "Fev",
+        "mar": "Mar",
+        "apr": "Abr",
+        "may": "Mai",
+        "jun": "Jun"
+    },
+    "categories": {
+        "electronics": "Eletrônicos",
+        "accessories": "Acessórios",
+        "software": "Software",
+        "services": "Serviços"
+    }
+}

@@ -1,28 +1,36 @@
-import Switch from "@/components/ui/Switch"
-import { useTheme } from "@/context/ThemeContext"
+/* import Switch from "@/components/ui/Switch"
+import { useTheme } from "@/context/ThemeContext" */
+import { useTranslation } from "react-i18next"
+
 
 
 
 export default function PreferencesForm(){
-    const { darkMode, toggleTheme} = useTheme()
+    const { i18n } = useTranslation()
+    //const { darkMode, toggleTheme} = useTheme()
     
 
     return(
         <section className="rounded-xl bg-white p-6 shadow-sm">
             <h2 className="mb-6 text-xl font-semibold">Preferences</h2>
             <div className="space-y-5">
-                <div className="flex items-center justify-between">
+                {/* <div className="flex items-center justify-between">
                     <span>Dark Mode</span>
                     <Switch
                         checked={darkMode}
                         onChange={toggleTheme}/>
-                </div>
+                </div> */}
                 <div>
                     <label className="mb-2 block">Language</label>
-                    <select className="w-full rounded-lg border border-slate-300 p-3">
-                        <option value="">English</option>
-                        <option value="">Portuguese</option>
-                        <option value="">Spanish</option>
+                    <select
+                        value={i18n.language}
+                        onChange={(e) => i18n.changeLanguage(e.target.value)} 
+                        className="w-full rounded-lg border border-slate-300 p-3">
+
+                        <option value="en">English</option>
+                        <option value="pt">Portuguese</option>
+                        <option value="es">Spanish</option>
+                    
                     </select>
                 </div>
                 <div>

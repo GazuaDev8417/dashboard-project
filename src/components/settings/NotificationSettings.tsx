@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Switch from "@/components/ui/Switch"
+import { toast } from "sonner"
 
 
 
@@ -17,27 +18,36 @@ export default function NotificationsSettings(){
                     <span>Email Notifications</span>
                     <Switch
                         checked={email}
-                        onChange={() =>
-                            setEmail(!email)
-                        }/>
+                        onChange={() =>{
+                            const next = !email
+                            setEmail(next)
+
+                            toast.success(next ? 'Email notification enabled' : 'Email notification disabled')
+                        }}/>
                 </label>
 
                 <label className="flex items-center justify-between">
                     <span>Push Notifications</span>
                     <Switch
                         checked={push}
-                        onChange={() =>
-                            setPush(!push)
-                        }/>
+                        onChange={() =>{
+                            const next = !push
+                            setPush(next)
+
+                            toast.success(next ? 'Push notification enabled' : 'Push notification disabled')
+                        }}/>
                 </label>
 
                 <label className="flex items-center justify-between">
                     <span>Marketing Emails</span>
                     <Switch
                         checked={marketing}
-                        onChange={() =>
-                            setMarketing(!marketing)
-                        }/>
+                        onChange={() =>{
+                            const next = !marketing
+                            setMarketing(next)
+
+                            toast.success(next ? 'Marketing emails enabled' : 'Marketing email disabled')
+                        }}/>
                 </label>
 
             </div>

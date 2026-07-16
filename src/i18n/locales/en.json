@@ -1,0 +1,30 @@
+{
+    "dashboard": "Dashboard",
+    "analytics": "Analytics",
+    "customers": "Customers",
+    "products": "Products",
+    "settings": "Settings",
+
+    "preferences": "Preferences",
+    "language": "Language",
+    "timezone": "Timezone",
+
+    "notifications": "Notifications",
+    "emailNotifications": "Email Notifications",
+    "pushNotifications": "Push Notifications",
+    "marketingEmails": "Marketing Emails",
+    "months": {
+        "jan": "Jan",
+        "feb": "Feb",
+        "mar": "Mar",
+        "apr": "Apr",
+        "may": "May",
+        "jun": "Jun"
+    },
+    "categories": {
+        "electronics": "Electronics",
+        "accessories": "Accessories",
+        "software": "Software",
+        "services": "Services"
+    }
+}
