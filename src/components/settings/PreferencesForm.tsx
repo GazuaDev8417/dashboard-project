@@ -25,18 +25,17 @@ export default function PreferencesForm(){
 
                         <option value="en">English</option>
                         <option value="pt">Portuguese</option>
-                        <option value="es">Spanish</option>
                     
                     </select>
                 </div>
-                <div>
+                {/* <div>
                     <label className="mb-2 block">{t('Timezone')}</label>
                     <select className="w-full rounded-lg border border-slate-300 p-3">
                         <option value="">UTC</option>
                         <option value="">GMT-3</option>
                         <option value="">GMT-5</option>
                     </select>
-                </div>
+                </div> */}
             </div>
         </section>
     )
