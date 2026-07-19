@@ -13,8 +13,9 @@ export default function SecurityForm() {
     const [password, setPassword] = useState<string>('')
     const [confirmPassword, setConfirmPassword] = useState<string>('')
 
-
-
+    
+    
+    
     function changePassord(){
         if(currentPassword !== user.password){
             alert('Current password incorrect')

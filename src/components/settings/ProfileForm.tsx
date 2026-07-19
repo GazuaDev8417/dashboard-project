@@ -1,6 +1,6 @@
 import Button from "@/components/ui/Button"
 import { useAuth } from "@/context/AuthContext"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useTranslation } from "react-i18next"
 
 
@@ -15,11 +15,18 @@ export default function ProfileForm(){
 
 
 
+    useEffect(() => {
+        setName(user.name)
+        setEmail(user.email)
+        setRole(user.role)
+    }, [user])
+
+
 
     return(
         <section className="rounded-xl bg-white p-6 shadow-sm">
             <h2 className="mb-6 text-xl font-semibold">{t('Profile')}</h2>
-            <div className="grid gap-5 md:grid-colors-2">
+            <div className="grid gap-5 md:grid-cols-2">
                 <div>
                     <label className="mb-2 block text-sm font-medium">
                         {t('Full Name')}
@@ -45,7 +52,7 @@ export default function ProfileForm(){
                     onChange={(e) => setRole(e.target.value)}
                     className="w-full rounded-lg border border-slate-300 p-3"/>
             </div>
-            <div className="mt-6 justify-end">
+            <div className="mt-6 flex justify-end">
                 <Button onClick={()=>{
                     updateProfile({ name, email, role })
                 }}>

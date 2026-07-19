@@ -99,19 +99,19 @@ http://localhost:5173
 
 ### Dashboard
 
-> Add a screenshot here.
+![Dashboard screenshot](./readmeImgs/dashboard.png)
 
 ### Customers
 
-> Add a screenshot here.
+![Customers screenshot](./readmeImgs/customers.png)
 
 ### Products
 
-> Add a screenshot here.
+![Product screenshot](./readmeImgs/product.png)
 
 ### Settings
 
-> Add a screenshot here.
+![Settings screenshot](./readmeImgs/settings.png)
 
 ---
 

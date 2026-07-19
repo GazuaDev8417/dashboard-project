@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import { useEffect, useState, type FormEvent, type ChangeEvent} from "react"
+import { useEffect, useState, type SubmitEvent, type ChangeEvent} from "react"
 import { Mail, Lock } from "lucide-react"
 import { useAuth } from "@/context/AuthContext"
 import Button from "@/components/ui/Button"
@@ -17,18 +17,19 @@ interface FormData{
 
 export default function LoginPage(){
     const navigate = useNavigate()
-    const { defaultUser } = useAuth()
+    const { user } = useAuth()
     const [checked, setChecked] = useState<boolean>(false)
     const [form, setForm] =useState<FormData>({
-        email:'francadasilvaflamarion@gmail.com',
-        password:'123456'
+        email: user.email,
+        password: user.password
     })
     
 
     useEffect(()=>{
-        const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true'
+        const isLocalAuth = localStorage.getItem('isAuthenticated') === 'true'
+        const isSessionAuth = sessionStorage.getItem('isAuthenticated') === 'true'
 
-        if(isAuthenticated){
+        if(isLocalAuth || isSessionAuth){
             navigate('/')
         }
     }, [navigate])
@@ -41,22 +42,21 @@ export default function LoginPage(){
     }
 
 
-    const login = (e:FormEvent<HTMLFormElement>)=>{
+    const login = (e:SubmitEvent<HTMLFormElement>)=>{
         e.preventDefault()
         
-        if(form.email === defaultUser.email && form.password === defaultUser.password && !checked){
-            sessionStorage.setItem('isAuthenticated', 'true')
-            sessionStorage.setItem('user', JSON.stringify(defaultUser))
+        if(form.email === user.email && form.password === user.password){
+            const { password, ...userProfile } = user
+
+            if(checked){
+                localStorage.setItem('isAuthenticated', 'true')
+                localStorage.setItem('user', JSON.stringify(userProfile))
+            }else{
+                sessionStorage.setItem('isAuthenticated', 'true')
+                sessionStorage.setItem('user', JSON.stringify(userProfile))
+            }
 
             navigate('/')
-
-            return
-        }else if(form.email === defaultUser.email && form.password === defaultUser.password && checked){
-            localStorage.setItem('isAuthenticated', 'true')
-            localStorage.setItem('user', JSON.stringify(defaultUser))
-
-            navigate('/')
-
             return
         }
 

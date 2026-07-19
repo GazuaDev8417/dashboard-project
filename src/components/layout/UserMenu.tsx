@@ -108,7 +108,9 @@ export default function UserMenu(){
                     <button
                         onClick={()=>{
                             localStorage.removeItem('isAuthenticated')
+                            sessionStorage.removeItem('isAuthenticated')
                             localStorage.removeItem('user')
+                            sessionStorage.removeItem('user')
                             navigate('/login')
                             setOpen(false)
                         }} 
